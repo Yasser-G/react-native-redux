@@ -11,6 +11,7 @@
 - Simply connect your components with simpler connect function
 - Easily use hooks for your functional component, Dive deep in state up to 4 levels.
 - Built on redux, react-redux and redux-persist, No previous experience needed.
+###### Note that this lib was known before as [Step React Redux][StepReactRedux].
 
 
 
@@ -265,8 +266,7 @@ xResetState()
 
 
 
-
-
+[StepReactRedux]: https://github.com/Yasser-G/step-react-redux
 [npmDownloads]: <https://img.shields.io/npm/dt/react-native-redux?label=Installs&logo=npm&style=plastic>
 [npmLicense]: <https://img.shields.io/npm/l/react-native-redux?label=License&style=plastic>
 [npmVersion]: <https://img.shields.io/npm/v/react-native-redux?label=Latest%20Version&style=plastic>
