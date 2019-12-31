@@ -1,0 +1,28 @@
+{
+  "name": "react-native-redux",
+  "version": "0.0.2",
+  "description": "Implement React-Redux into your React-Native app in just One Step!",
+  "main": "index.tsx",
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.7.1",
+    "react-redux": "7.1.3",
+    "redux": "4.0.5",
+    "redux-persist": "6.0.0"
+  },
+  "keywords": [
+    "khtwah",
+    "reactnative",
+    "redux",
+    "react-redux",
+    "redux-persist"
+  ],
+  "author": {
+    "name": "Yasser-G",
+    "email": "Yas@Keemail.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yasser-G/react-native-redux"
+  },
+  "license": "MIT"
+}
