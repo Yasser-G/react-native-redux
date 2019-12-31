@@ -1,6 +1,6 @@
 {
   "name": "react-native-redux",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Implement React-Redux into your React-Native app in just One Step!",
   "main": "index.tsx",
   "dependencies": {
