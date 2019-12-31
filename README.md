@@ -22,7 +22,7 @@
 ## Instalation 
 
 
-`npm i step-react-native-redux`  **- OR -**  `yarn add step-react-native-redux`
+`npm i react-native-redux`  **- OR -**  `yarn add react-native-redux`
 
 
 
@@ -38,7 +38,7 @@ loading: JSX.Element?
 ###### Usage
 ```ts
 import React from "react"
-import { Provider } from "step-react-native-redux"
+import { Provider } from "react-native-redux"
 import AppContainer from "../navigation" // Path to Root Navigation
 
 
@@ -75,7 +75,7 @@ requiredKeys: string[]?
  
 ```ts
 import React from "react"
-import { connect } from "step-react-native-redux"
+import { connect } from "react-native-redux"
 
 class UserPage extend React.Component {
   // Your Component goes here
@@ -105,12 +105,12 @@ state: object
 ###### Usage
 
 ```ts
-import { xSetState } from "step-react-native-redux"
+import { xSetState } from "react-native-redux"
 
 // Anywhere in your code
 
 xSetState({ user: { id: 1, name: "Some Name" } })
-// console logs => StepReactRedux.user, { id: 1, name: "Some Name" }
+// console logs => ReactNativeRedux.user, { id: 1, name: "Some Name" }
 // Now all your connected components will have "user" prop
 
 
@@ -150,21 +150,21 @@ state: object
 ###### Usage
 
 ```ts
-import { setStateForKey } from "step-react-native-redux"
+import { setStateForKey } from "react-native-redux"
 
 // Similar to xSetState
 // plus it can be used to set deep state
 
 setStateForKey("user", { id: 1, name: "Some Name" })
 
-// console logs => StepReactRedux.user, { id: 1, name: "Some Name" }
+// console logs => ReactNativeRedux.user, { id: 1, name: "Some Name" }
 // Now all your connected components will have "user" prop
 
 // Usage to set deep state
 
 setStateForKey("user.name", "New Name" )
 
-// console logs => StepReactRedux.user.name, "New Name"
+// console logs => ReactNativeRedux.user.name, "New Name"
 
 setStateForKey("user.name", "New Name" )
 
@@ -184,7 +184,7 @@ key: string
 ###### Usage
 
 ```ts
-import { getStateForKey } from "step-react-native-redux"
+import { getStateForKey } from "react-native-redux"
 
 // Similar to setStateForKey
 // but it can be used to get state and deep state
@@ -211,7 +211,7 @@ console.log(anotherValue) // => null
  
 ```ts
 import React from "react"
-import { useStepState } from "step-react-native-redux"
+import { useStepState } from "react-native-redux"
 
 // Hooks Are used inside functional components
 
@@ -248,7 +248,7 @@ export default MyComponent
  
 ```ts
 import React from "react"
-import { xResetState } from "step-react-native-redux"
+import { xResetState } from "react-native-redux"
 
 /*
 Top level index in your code, call this method once during your develeopment process
@@ -267,7 +267,7 @@ xResetState()
 
 
 
-[npmDownloads]: <https://img.shields.io/npm/dt/step-react-native-redux?label=Installs&logo=npm&style=plastic>
-[npmLicense]: <https://img.shields.io/npm/l/step-react-native-redux?label=License&style=plastic>
-[npmVersion]: <https://img.shields.io/npm/v/step-react-native-redux?label=Latest%20Version&style=plastic>
+[npmDownloads]: <https://img.shields.io/npm/dt/react-native-redux?label=Installs&logo=npm&style=plastic>
+[npmLicense]: <https://img.shields.io/npm/l/react-native-redux?label=License&style=plastic>
+[npmVersion]: <https://img.shields.io/npm/v/react-native-redux?label=Latest%20Version&style=plastic>
 [PRsBadge]: <https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=plastic>

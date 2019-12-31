@@ -1,5 +1,7 @@
 import { useSelector, useStore } from 'react-redux'
 
+// TODO: Refactor
+
 const useStepSub2State = (mainKey, subKey) => {
     const mainState = useStepState(mainKey)
     if ((mainState) && (subKey in mainState)) {
@@ -56,14 +58,14 @@ const useStepState = (key) => {
 
 
             default:
-                console.warn(`StepReactRedux.${key} is deeper than 4.`)
+                console.warn(`ReactNativeRedux.${key} is deeper than 4.`)
                 return null
         }
     } else {
         const store = useStore()
-        const Step = store.getState()['Step']
-        if (key in Step) {
-            return useSelector(({ Step }) => Step[key])
+        const RN = store.getState()['RN']
+        if (key in RN) {
+            return useSelector(({ RN }) => RN[key])
         } else { return null }
     }
 }

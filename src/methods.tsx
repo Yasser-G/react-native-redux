@@ -79,7 +79,7 @@ const connect = (WrappedComponent, requiredKeys: Array<string> = []) => {
     if (!allStrings) {
         throw Error(errorTemplate(errors.requiredKeysStrings))
     }
-    const mStep = ({ RN }) => {
+    const mapStateToProps = ({ RN }) => {
         const propsToConnect = {}
         if (requiredKeys.length == 0) {
             Object.keys(RN).forEach((key) => {
@@ -95,7 +95,7 @@ const connect = (WrappedComponent, requiredKeys: Array<string> = []) => {
         })
         return propsToConnect
     }
-    return connectX(mStep, {})(WrappedComponent)
+    return connectX(mapStateToProps, {})(WrappedComponent)
 };
 
 
