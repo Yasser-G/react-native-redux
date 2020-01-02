@@ -1,19 +1,19 @@
-import React from "react"
-import { Provider as ProviderX } from 'react-redux'
-import { RootStore, AppPersistor } from "./config";
-import { PersistGate } from 'redux-persist/integration/react'
-import { xSetState, getStateForKey } from "./methods";
+import React from 'react';
+import { Provider as ProviderX } from 'react-redux';
+import { RootStore, AppPersistor } from './config';
+import { PersistGate } from 'redux-persist/integration/react';
+import { xSetState, getStateForKey } from './methods';
 
 const stateInitalizer = (initialState: object) => {
-    const didInit = getStateForKey('didInit')
-    if (!didInit) { xSetState({ ...initialState, didInit: true }) }
-}
+    const didInit = getStateForKey('didInit');
+    if (!didInit) { xSetState({ ...initialState, didInit: true }); }
+};
 
-/** 
+/**
  * React Native Redux Provider
  * @example
- * const myInitialState = { 
- *    // initial state 
+ * const myInitialState = {
+ *    // initial state
  * }
  * <Provider
  *  initialState={myInitialState}
@@ -25,8 +25,12 @@ const stateInitalizer = (initialState: object) => {
  * </Provider>
  * @param {object} initialState
 */
-export const Provider = ({ initialState = {}, loading, children, }) => {
-    stateInitalizer(initialState)
+export const Provider = ({
+    initialState = {},
+    loading,
+    children,
+}) => {
+    stateInitalizer(initialState);
     return (
         <ProviderX store={RootStore}>
             <PersistGate
@@ -36,4 +40,4 @@ export const Provider = ({ initialState = {}, loading, children, }) => {
             />
         </ProviderX>
     );
-}
+};
