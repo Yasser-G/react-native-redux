@@ -23,7 +23,13 @@
 ## Instalation 
 
 
-`npm i react-native-redux`  **- OR -**  `yarn add react-native-redux`
+- Install & Link [React Native Async Storage][asyncstorage]   **// SKIP this step if already using react-native async storage**
+
+	
+
+- Then install React Native Redux
+
+	`npm i react-native-redux`  **- OR -**  `yarn add react-native-redux`
 
 
 
@@ -265,7 +271,7 @@ xResetState()
 
 
 
-
+[asyncstorage]: https://github.com/react-native-community/async-storage#install
 [StepReactRedux]: https://github.com/Yasser-G/step-react-redux
 [npmDownloads]: <https://img.shields.io/npm/dt/react-native-redux?label=Installs&logo=npm&style=plastic>
 [npmLicense]: <https://img.shields.io/npm/l/react-native-redux?label=License&style=plastic>
