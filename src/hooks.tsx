@@ -1,4 +1,4 @@
-import { useSelector, useStore } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const useStepSub2State = (mainKey, subKey) => {
     const mainState = useStepState(mainKey);
@@ -60,11 +60,7 @@ const useStepState = (key) => {
                 return null;
         }
     } else {
-        const store = useStore();
-        const RN = store.getState().RN;
-        if (key in RN) {
-            return useSelector(({ RN }) => RN[key]);
-        } else { return null; }
+        return useSelector(({ RN }) => (key in RN) ? RN[key] : null);
     }
 };
 
