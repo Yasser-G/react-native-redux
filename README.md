@@ -9,7 +9,7 @@
 - No Persistance configuration needed, All data are persisted!
 - Very simple way to change store state, just like Component setState !
 - Simply connect your components with simpler connect function
-- Easily use hooks for your functional component, Dive deep in state up to 4 levels.
+- Easily use hooks for your functional component, Dive deep in state up to 5 levels!.
 - Built on redux, react-redux and redux-persist, No previous experience needed.
 ###### Note that this lib was known before as [Step React Redux][StepReactRedux].
 
@@ -212,23 +212,23 @@ console.log(anotherValue) // => null
 // Remeber that You can use getStateForKey ANYWHERE!
 ```
 
-### **useStepState** (Hook)
+### **useStateX** (Hook)
 
 ###### Usage
  
 ```ts
 import React from "react"
-import { useStepState } from "react-native-redux"
+import { useStateX } from "react-native-redux"
 
 // Hooks Are used inside functional components
 
 const MyComponent = (props) => {
 
 	// Depth: 2 levels
-	const isLoggedIn = useStepState("user.loggedIn")
+	const isLoggedIn = useStateX("user.loggedIn")
 	
 	// Depth: 3 levels
-	const userName = isLoggedIn ? useStepState("user.data.name") : "Guest"
+	const userName = isLoggedIn ? useStateX("user.data.name") : "Guest"
 	
 	// NOTE THAT DEPTH TREE SHOULD BE INITIALIZED BEFORE HOOKING IT
 	
