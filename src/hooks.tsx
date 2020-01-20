@@ -44,7 +44,7 @@ const hookValue = (state: object, key: string) => {
             ) { return state[keySplitter[0]][keySplitter[1]][keySplitter[2]][keySplitter[3]]; }
 
         default:
-            console.warn(`ReactNativeRedux.${key} does not exist.\mMake Sure it is initialized before hooking it`);
+            console.warn(`ReactNativeRedux.${key} does not exist.\nMake Sure it is initialized before hooking it`);
             return null;
     }
 
