@@ -1,5 +1,6 @@
 import { connect as connectX } from 'react-redux';
 import { RootStore } from './config';
+import { valueExtractor } from './depth';
 
 const errors = {
     xSetState: 'Provided state is not an object',
@@ -35,23 +36,8 @@ const xSetState = (state: object) => {
  */
 const getStateForKey = (key: string) => {
     if (typeof key !== 'string') { throw Error(errors.getStateForKey); }
-    if (key.includes('.')) {
-        const keySplitter = key.split('.', 2);
-        const mainKey = keySplitter[0];
-        const subKey = keySplitter[1];
-        return getSubstateForKeys(mainKey, subKey);
-    } else {
-        const RN = RootStore.getState().RN;
-        if (key in RN) {
-            return RN[key];
-        } else { return null; }
-    }
-};
-const getSubstateForKeys = (mainKey: string, subKey: string) => {
-    const mainState = getStateForKey(mainKey);
-    if ((mainState) && (subKey in mainState)) {
-        return mainState[subKey];
-    } else { return null; }
+    const { RN } = RootStore.getState();
+    return valueExtractor(RN, key)
 };
 
 /**
@@ -89,9 +75,7 @@ const connect = (WrappedComponent, requiredKeys: Array<string> = []) => {
             return propsToConnect;
         }
         for (const key of requiredKeys) {
-            if (key in RN) { propsToConnect[key] = RN[key]; } else {
-                throw Error(errorTemplate(errors.requiredKeyNF(key)));
-            }
+            propsToConnect[key] = valueExtractor(RN, key);
         }
         return propsToConnect;
     };
