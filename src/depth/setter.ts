@@ -7,8 +7,7 @@ const stateSetter = (state: object, key: string, payload: object) => {
     const depth = keySplitter.length;
 
     if (depth >= 4) {
-        console.warn(`ReactNativeRedux.${key} is deep for ${depth} levels which is deeper than what we currently support.
-        Pleaase Submit a feature request showing your use case to support this depth`);
+        console.warn(`ReactNativeRedux.${key} is deep for ${depth} levels which is deeper than what we currently support.\nPleaase Submit a feature request showing your use case to support this depth`);
         return state;
     }
 
@@ -51,8 +50,7 @@ const stateSetter = (state: object, key: string, payload: object) => {
             }
 
         default:
-            console.warn(`ReactNativeRedux Failed to change deep state: ${key}. 
-            Make Sure that its parent values are initialized before changing its children values.`);
+            console.warn(`ReactNativeRedux Failed to change deep state: ${key}./nMake Sure that its parent values are initialized before changing its children values.`);
             return state;
     }
 

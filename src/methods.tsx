@@ -8,7 +8,6 @@ const errors = {
     connectWrapped: 'WrappedComponent is required',
     requiredKeysArray: 'required keys is not an Array',
     requiredKeysStrings: 'all required keys should be strings',
-    requiredKeyNF: (key: string) => `required key "${key}" not found`,
 };
 
 /**
@@ -20,7 +19,10 @@ const xResetState = () => setStateForKey(null, 'xResetState');
  * @param {object} state
  */
 const xSetState = (state: object) => {
-    if (typeof state !== 'object') { throw Error(errors.xSetState); }
+    if (typeof state !== 'object') {
+        console.warn(errors.xSetState);
+        return;
+    }
     for (const key in state) { setStateForKey(state[key], key); }
 };
 
@@ -35,7 +37,10 @@ const xSetState = (state: object) => {
     * @param {string} key Key for required state
  */
 const getStateForKey = (key: string) => {
-    if (typeof key !== 'string') { throw Error(errors.getStateForKey); }
+    if (typeof key !== 'string') {
+        console.warn(errors.getStateForKey);
+        return null;
+    }
     const { RN } = RootStore.getState();
     return valueExtractor(RN, key)
 };
@@ -52,7 +57,11 @@ const setStateForKey = (state: any, key: string) => {
  * @param WrappedComponent Class Component
  * @param {Array<string>} requiredKeys Array Of required keys to be connected.
  */
-const connect = (WrappedComponent, requiredKeys: Array<string> = []) => {
+const connect = (
+    WrappedComponent,
+    requiredKeys: Array<string> = [],
+    deepKeyReplacer: string = "_"
+) => {
 
     if (typeof WrappedComponent === 'undefined') { throw Error(errors.connectWrapped); }
 
@@ -75,7 +84,9 @@ const connect = (WrappedComponent, requiredKeys: Array<string> = []) => {
             return propsToConnect;
         }
         for (const key of requiredKeys) {
-            propsToConnect[key] = valueExtractor(RN, key);
+            const isDeepKey = key.includes(".")
+            const propKey = isDeepKey ? key.split(".").join(deepKeyReplacer) : key
+            propsToConnect[propKey] = valueExtractor(RN, key);
         }
         return propsToConnect;
     };

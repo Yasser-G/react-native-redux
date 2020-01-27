@@ -97,6 +97,18 @@ export default connect(UserPage)
 */ 
 
 export default connect(UserPage, ["user", "someKey", "anotherKey"])
+
+
+// You can also connect to deep state ( Up to 5 levels ) using dotted key. 
+export default connect(UserPage, ["user.name"])
+// a prop with key "user_name" will be connected
+
+// You can change deepKeyReplacer as a third optional argument
+export default connect(UserPage, ["user.name"], "-")
+// a prop with key "user-name" will be connected
+
+
+
 ```
 
 
@@ -160,7 +172,7 @@ state: object
 import { setStateForKey } from "react-native-redux"
 
 // Similar to xSetState
-// plus it can be used to set deep state
+// plus it can be used to set deep state up to 3 levels
 
 setStateForKey("user", { id: 1, name: "Some Name" })
 
@@ -172,9 +184,6 @@ setStateForKey("user", { id: 1, name: "Some Name" })
 setStateForKey("user.name", "New Name" )
 
 // console logs => ReactNativeRedux.user.name, "New Name"
-
-setStateForKey("user.name", "New Name" )
-
 // Remeber that You can use setStateForKey ANYWHERE!
 ```
 
@@ -214,6 +223,7 @@ console.log(anotherValue) // => null
 
 ### **useStateX** (Hook)
 
+##### You may like to try our new set of hooks [React Stateful Function][ReactStatefulFunction].
 ###### Usage
  
 ```ts
@@ -273,6 +283,7 @@ xResetState()
 
 [asyncstorage]: https://github.com/react-native-community/async-storage#install
 [StepReactRedux]: https://github.com/Yasser-G/step-react-redux
+[ReactStatefulFunction]: https://github.com/Yasser-G/React-Stateful-Function
 [npmDownloads]: <https://img.shields.io/npm/dt/react-native-redux?label=Installs&logo=npm&style=plastic>
 [npmLicense]: <https://img.shields.io/npm/l/react-native-redux?label=License&style=plastic>
 [npmVersion]: <https://img.shields.io/npm/v/react-native-redux?label=Latest%20Version&style=plastic>

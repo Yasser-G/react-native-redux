@@ -4,8 +4,7 @@ const valueExtractor = (state: object, key: string) => {
     const depth = keySplitter.length;
 
     if (depth >= 6) {
-        console.warn(`ReactNativeRedux.${key} is deep for ${depth} levels which is deeper than what we currently support.
-        Pleaase Submit a feature request showing your use case to support this depth`);
+        console.warn(`ReactNativeRedux.${key} is deep for ${depth} levels which is deeper than what we currently support.\nPlease Submit a feature request showing your use case to support this depth`);
         return null;
     }
 
@@ -44,9 +43,10 @@ const valueExtractor = (state: object, key: string) => {
             ) { return state[keySplitter[0]][keySplitter[1]][keySplitter[2]][keySplitter[3]]; }
 
         default:
-            console.warn(`ReactNativeRedux.${key} does not exist. 
-            Make Sure it is initialized before hooking/getting it.
-            null returned`);
+            const shouldWarn = !((key.length == 0) || (key === "didInit"))
+            if (shouldWarn) {
+                console.warn(`ReactNativeRedux.${key} does not exist.\nMake Sure it is initialized before getting or hooking it.\n null returned`);
+            }
             return null;
     }
 
