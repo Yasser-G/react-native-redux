@@ -40,7 +40,7 @@ const valueExtractor = (state: object, key: string) => {
                 (keySplitter[2] in state[keySplitter[0]][keySplitter[1]]) &&
                 (keySplitter[3] in state[keySplitter[0]][keySplitter[1]][keySplitter[2]]) &&
                 (keySplitter[4] in state[keySplitter[0]][keySplitter[1]][keySplitter[2]][keySplitter[3]])
-            ) { return state[keySplitter[0]][keySplitter[1]][keySplitter[2]][keySplitter[3]]; }
+            ) { return state[keySplitter[0]][keySplitter[1]][keySplitter[2]][keySplitter[3]][keySplitter[4]]; }
 
         default:
             const shouldWarn = !((key.length == 0) || (key === "didInit"))
