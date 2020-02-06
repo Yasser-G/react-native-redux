@@ -13,7 +13,7 @@ const errors = {
 /**
  * Reset State - Clears stored state tree.
  */
-const xResetState = () => setStateForKey(null, 'xResetState');
+const xResetState = () => setStateForKey('xResetState', null);
 /**
  * X Set State
  * @param {object} state
@@ -23,7 +23,7 @@ const xSetState = (state: object) => {
         console.warn(errors.xSetState);
         return;
     }
-    for (const key in state) { setStateForKey(state[key], key); }
+    for (const key in state) { setStateForKey(key, state[key]); }
 };
 
 /**
@@ -48,7 +48,7 @@ const getStateForKey = (key: string) => {
 /**
  * Similar to xSetState, plus it can be used to set deep state
  */
-const setStateForKey = (state: any, key: string) => {
+const setStateForKey = (key: string, state: any) => {
     RootStore.dispatch({ type: key, payload: state });
 };
 
