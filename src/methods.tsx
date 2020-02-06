@@ -42,7 +42,7 @@ const getStateForKey = (key: string) => {
         return null;
     }
     const { RN } = RootStore.getState();
-    return valueExtractor(RN, key)
+    return valueExtractor(RN, key);
 };
 
 /**
@@ -60,7 +60,7 @@ const setStateForKey = (state: any, key: string) => {
 const connect = (
     WrappedComponent,
     requiredKeys: Array<string> = [],
-    deepKeyReplacer: string = "_"
+    deepKeyReplacer: string = '_'
 ) => {
 
     if (typeof WrappedComponent === 'undefined') { throw Error(errors.connectWrapped); }
@@ -78,14 +78,13 @@ const connect = (
         const propsToConnect = {};
         if (requiredKeys.length === 0) {
             for (const key in RN) {
-                if (key === 'didInit') { return; }
-                propsToConnect[key] = RN[key];
+                if (key !== 'didInit') { propsToConnect[key] = RN[key]; }
             }
             return propsToConnect;
         }
         for (const key of requiredKeys) {
-            const isDeepKey = key.includes(".")
-            const propKey = isDeepKey ? key.split(".").join(deepKeyReplacer) : key
+            const isDeepKey = key.includes('.');
+            const propKey = isDeepKey ? key.split('.').join(deepKeyReplacer) : key;
             propsToConnect[propKey] = valueExtractor(RN, key);
         }
         return propsToConnect;
