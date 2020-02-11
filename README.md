@@ -218,6 +218,12 @@ console.log(someValue) // => null
 const anotherValue = getStateForKey("anotherKey.subKey") 
 console.log(anotherValue) // => null
 
+
+// You may add fallback value as second optional argument
+/// default fallback is null
+const undefinedValue = getStateForKey("somekey.subKey.subsubkey","Hello World") 
+console.log(anotherValue) // =>  Hello World
+
 // Remeber that You can use getStateForKey ANYWHERE!
 ```
 
@@ -240,7 +246,12 @@ const MyComponent = (props) => {
 	// Depth: 3 levels
 	const userName = isLoggedIn ? useStateX("user.data.name") : "Guest"
 	
-	// NOTE THAT DEPTH TREE SHOULD BE INITIALIZED BEFORE HOOKING IT
+  // NOTE THAT DEPTH TREE SHOULD BE INITIALIZED BEFORE HOOKING IT
+  
+  // You may add fallback value as second optional argument
+  // default fallback is null
+  const undefinedValue = getStateForKey("somekey.subKey.subsubkey","Hello World") 
+  console.log(anotherValue) // =>  Hello World
 	
 	return (
 		<>

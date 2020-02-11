@@ -36,13 +36,14 @@ const xSetState = (state: object) => {
     * const userName = getStateForKey('userData.name')
     * @param {string} key Key for required state
  */
-const getStateForKey = (key: string) => {
+const getStateForKey = (key: string, fallback = null) => {
     if (typeof key !== 'string') {
         console.warn(errors.getStateForKey);
         return null;
     }
     const { RN } = RootStore.getState();
-    return valueExtractor(RN, key);
+    const value = valueExtractor(RN, key);
+    return value || fallback;
 };
 
 /**
