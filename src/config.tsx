@@ -1,6 +1,6 @@
 import { persistStore, persistReducer } from 'redux-persist';
 import { createStore, combineReducers } from 'redux';
-import storage from '@react-native-community/async-storage';
+import storage from '@react-native-async-storage/async-storage';
 import { stateSetter } from './depth';
 
 const smart_reducer = (state = {}, action) => stateSetter(state, action.type, action.payload);
